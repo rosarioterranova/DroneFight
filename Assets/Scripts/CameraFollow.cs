@@ -6,9 +6,9 @@ public class CameraFollow : MonoBehaviour
 {
     [SerializeField] Transform target;
     [SerializeField] float distance = 5f;
-    [SerializeField]  float height = 10f;
-    [SerializeField]  float heightDamping = 2.0f;
-    [SerializeField]  float rotationDamping = 3.0f;
+    [SerializeField] float height = 10f;
+    [SerializeField] float heightDamping = 2.0f;
+    [SerializeField] float rotationDamping = 3.0f;
 
     float wantedRotationAngle;
     float wantedHeight;
