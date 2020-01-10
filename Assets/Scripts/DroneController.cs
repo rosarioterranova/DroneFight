@@ -8,6 +8,10 @@ public class DroneController : MonoBehaviour
     [SerializeField] float rotationSpeedHorizontal = 2.0f;
     [SerializeField] float rotationSpeedVertical = 2.0f;
     [SerializeField] GameObject[] propellers;
+    [SerializeField] GameObject missile;
+    [SerializeField] Transform[] missileSpawnLocation;
+
+    [SerializeField] GameObject target;
 
     float yawRotation = 0.0f;
     float pitchRotation = 0.0f;
@@ -59,17 +63,26 @@ public class DroneController : MonoBehaviour
             }
         }
 
+        if(Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            Debug.Log("charged");
+        }
+        if(Input.GetKeyUp(KeyCode.Mouse1))
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                GameObject b = Instantiate(missile, missileSpawnLocation[i].position,Quaternion.identity);
+                b.GetComponent<Missile>().target = target.transform;
+            }
+        }
         foreach (var propeller in propellers)
         {
             propeller.transform.RotateAround(propeller.transform.parent.transform.position, propeller.transform.parent.transform.up, Time.deltaTime * 1000f);
-            //propeller.transform.localRotation = Quaternion.Euler(0, 45, 0);
-            //propeller.transform.Rotate(Vector3.up *40f* Time.deltaTime);
         }
 
         yawRotation += rotationSpeedHorizontal * Input.GetAxis("Mouse X");
         pitchRotation -= rotationSpeedVertical * Input.GetAxis("Mouse Y");
 
         transform.eulerAngles = new Vector3(Mathf.Clamp(pitchRotation, -30, 30), yawRotation, 0.0f);
-        //transform.eulerAngles = new Vector3(pitchRotation, yawRotation, 0.0f);
     }
 }
