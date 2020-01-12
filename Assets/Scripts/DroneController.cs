@@ -1,28 +1,37 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DroneController : MonoBehaviour
 {
-    [SerializeField] float movementSpeed = 10f;
-    [SerializeField] float rotationSpeedHorizontal = 2.0f;
-    [SerializeField] float rotationSpeedVertical = 2.0f;
-    [SerializeField] GameObject[] propellers;
-    [SerializeField] GameObject missile;
-    [SerializeField] Transform[] missileSpawnLocation;
 
-    [SerializeField] GameObject target;
+    public Action OnPrimaryWeaponFire;
+    public Action OnSecondaryWeaponFire;
 
-    float yawRotation = 0.0f;
-    float pitchRotation = 0.0f;
-    ParticleSystem[] mainWeaponParticles;
+    [SerializeField] private float movementSpeed = 10f;
+    [SerializeField] private float rotationSpeedHorizontal = 2.0f;
+    [SerializeField] private float rotationSpeedVertical = 2.0f;
+    [SerializeField] private GameObject missile;
+    [SerializeField] private Transform[] missileSpawnLocation;
+
+    private GameObject target;
+    private float yawRotation = 0.0f;
+    private float pitchRotation = 0.0f;
+    private ParticleSystem[] gunsParticles;
 
     private void Awake()
     {
-        mainWeaponParticles = GetComponentsInChildren<ParticleSystem>();    
+        gunsParticles = GetComponentsInChildren<ParticleSystem>();    
     }
 
-    void Update()
+    private void Update()
+    {
+        ProcessInput();
+        Fly();
+    }
+
+    private void ProcessInput()
     {
         if(Input.GetKey(KeyCode.W))
         {
@@ -48,19 +57,25 @@ public class DroneController : MonoBehaviour
         {
             transform.Translate(Vector3.down * Time.deltaTime * movementSpeed);
         }
+
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
-            foreach (var particle in mainWeaponParticles)
+            foreach (var particle in gunsParticles)
             {
                 particle.Play();
             }
+            
         }
         if(Input.GetKeyUp(KeyCode.Mouse0))
         {
-            foreach (var particle in mainWeaponParticles)
+            foreach (var particle in gunsParticles)
             {
                 particle.Stop();
             }
+        }
+        if(Input.GetKey(KeyCode.Mouse0))
+        {
+            OnPrimaryWeaponFire?.Invoke();
         }
 
         if(Input.GetKeyDown(KeyCode.Mouse1))
@@ -74,15 +89,14 @@ public class DroneController : MonoBehaviour
                 GameObject b = Instantiate(missile, missileSpawnLocation[i].position,Quaternion.identity);
                 b.GetComponent<Missile>().target = target.transform;
             }
+            OnSecondaryWeaponFire?.Invoke();
         }
-        foreach (var propeller in propellers)
-        {
-            propeller.transform.RotateAround(propeller.transform.parent.transform.position, propeller.transform.parent.transform.up, Time.deltaTime * 1000f);
-        }
+    }
 
+    private void Fly()
+    {
         yawRotation += rotationSpeedHorizontal * Input.GetAxis("Mouse X");
         pitchRotation -= rotationSpeedVertical * Input.GetAxis("Mouse Y");
-
         transform.eulerAngles = new Vector3(Mathf.Clamp(pitchRotation, -30, 30), yawRotation, 0.0f);
     }
 }

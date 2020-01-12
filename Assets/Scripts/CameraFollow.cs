@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] Transform target;
-    [SerializeField] float distance = 5f;
-    [SerializeField] float height = 10f;
-    [SerializeField] float heightDamping = 2.0f;
-    [SerializeField] float rotationDamping = 3.0f;
+    [SerializeField] private Transform target;
+    [SerializeField] private float distance = 5f;
+    [SerializeField] private float height = 10f;
+    [SerializeField] private float heightDamping = 2.0f;
+    [SerializeField] private float rotationDamping = 3.0f;
 
-    float wantedRotationAngle;
-    float wantedHeight;
-    float currentRotationAngle;
-    float currentHeight;
-    Quaternion currentRotation;
+    private float wantedRotationAngle;
+    private float wantedHeight;
+    private float currentRotationAngle;
+    private float currentHeight;
+    private Quaternion currentRotation;
 
     void LateUpdate ()
     {
@@ -45,6 +45,5 @@ public class CameraFollow : MonoBehaviour
            // Always look at the target
             transform.LookAt (target);
        }
-
     }
 }
