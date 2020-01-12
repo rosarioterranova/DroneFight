@@ -5845,12 +5845,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d116ddaa974f2e84d880253efbdf9bb0, type: 3}
---- !u!1 &1309295044 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2036018348655315608, guid: 240385fa86a1dac4db6c740a3cdf1c7d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1685980894}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1309295047 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4369271482106518924, guid: 240385fa86a1dac4db6c740a3cdf1c7d,
@@ -10212,22 +10206,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4022883515273170590, guid: d79791b0b16802f4c9a2e864a0b1fbb4,
-        type: 3}
-      propertyPath: m_Drag
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6375771820046061592, guid: d79791b0b16802f4c9a2e864a0b1fbb4,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1309295044}
-    - target: {fileID: 6375771820046061592, guid: d79791b0b16802f4c9a2e864a0b1fbb4,
-        type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 6882974753523773041, guid: 297da155dd097544cbf086514b64de45,
-        type: 3}
     - target: {fileID: 6375771820046061593, guid: d79791b0b16802f4c9a2e864a0b1fbb4,
         type: 3}
       propertyPath: m_LocalPosition.x

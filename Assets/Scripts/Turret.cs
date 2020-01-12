@@ -7,12 +7,14 @@ public class Turret : MonoBehaviour
     [SerializeField] private GameObject topTurret;
     [SerializeField] private GameObject missile;
     [SerializeField] private Transform[] missileSpawnPositions;
+    [SerializeField] GameObject targetSprite;
 
     private float rotationSpeed = 10f;
     private TurretSight turretSight;
     private float lockdown = 2f;
     private float cooldown = 5f;
     private bool canFire = false;
+    private bool targetSpriteEnabled = false;
     
     private void Awake()
     {
@@ -28,6 +30,9 @@ public class Turret : MonoBehaviour
             Quaternion lookRotation = Quaternion.LookRotation(turretSight.Target.transform.position - topTurret.transform.position);
             topTurret.transform.rotation =  Quaternion.Slerp(topTurret.transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
         }
+
+        if(targetSpriteEnabled)
+            targetSprite.transform.LookAt(Camera.main.transform.position, Vector3.up);
     }
 
     private void StartFire()
@@ -49,7 +54,7 @@ public class Turret : MonoBehaviour
     private void DismissFire()
     {
         canFire = false;
-        Debug.Log("Dismissed Fire");
+        EnableTargetSprite(false);
     }
 
     private void OnDestroy()
@@ -66,5 +71,16 @@ public class Turret : MonoBehaviour
                 missileObj.GetComponent<Missile>().target = FindObjectOfType<DroneController>().transform;
                 Destroy(missileObj,4f);
             }
+    }
+
+    public void Damage()
+    {
+        Destroy(gameObject);
+    }
+
+    public void EnableTargetSprite(bool enabled)
+    {
+        targetSpriteEnabled = enabled;
+        targetSprite.SetActive(enabled);
     }
 }    
