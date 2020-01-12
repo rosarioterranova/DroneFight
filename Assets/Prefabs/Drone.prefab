@@ -337,6 +337,7 @@ MonoBehaviour:
   - {fileID: 455862397063714254}
   - {fileID: 8147884236240092354}
   - {fileID: 1850605200557423108}
+  acquireEnemyDistance: 100
 --- !u!65 &1980164139094676797
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -349,7 +350,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3.3, y: 1, z: 1.8}
-  m_Center: {x: 0.15, y: -0.9, z: -0.4}
+  m_Center: {x: -0.01, y: -0.05, z: 0.02}
 --- !u!54 &4022883515273170590
 Rigidbody:
   m_ObjectHideFlags: 0

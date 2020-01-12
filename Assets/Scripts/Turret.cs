@@ -5,6 +5,8 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     [SerializeField] private GameObject topTurret;
+    [SerializeField] private GameObject missile;
+    [SerializeField] private Transform[] missileSpawnPositions;
 
     private float rotationSpeed = 10f;
     private TurretSight turretSight;
@@ -39,7 +41,7 @@ public class Turret : MonoBehaviour
         yield return new WaitForSecondsRealtime(lockdown);
         while(canFire)
         {
-            Debug.Log("Turret fire!");
+            ShotMissiles();
             yield return new WaitForSecondsRealtime(cooldown);
         }
     }
@@ -54,5 +56,15 @@ public class Turret : MonoBehaviour
     {
         turretSight.OnPlayerOnSight -= StartFire;
         turretSight.OnPlayerOnSight -= DismissFire;
+    }
+
+    private void ShotMissiles()
+    {
+        for (int i = 0; i < 4; i++)
+            {
+                GameObject missileObj = Instantiate(missile, missileSpawnPositions[i].position,Quaternion.identity);
+                missileObj.GetComponent<Missile>().target = FindObjectOfType<DroneController>().transform;
+                Destroy(missileObj,4f);
+            }
     }
 }    

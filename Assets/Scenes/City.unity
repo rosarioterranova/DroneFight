@@ -398,8 +398,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 71d5fa31fb75f7c488e33316c0909101, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -724,11 +722,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2005707954}
     m_Modifications:
-    - target: {fileID: 5473069542799267091, guid: 5f8c1da78a67e5a458390829ec5a40bf,
-        type: 3}
-      propertyPath: m_Name
-      value: building3 (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 5473069542798838067, guid: 5f8c1da78a67e5a458390829ec5a40bf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -783,6 +776,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5473069542799267091, guid: 5f8c1da78a67e5a458390829ec5a40bf,
+        type: 3}
+      propertyPath: m_Name
+      value: building3 (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f8c1da78a67e5a458390829ec5a40bf, type: 3}
@@ -1645,11 +1643,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2005707954}
     m_Modifications:
-    - target: {fileID: 6188604347938469656, guid: 7c84387d69d027a448a14b92e337e8cd,
-        type: 3}
-      propertyPath: m_Name
-      value: building2 (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 6188604347938040632, guid: 7c84387d69d027a448a14b92e337e8cd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1704,6 +1697,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6188604347938469656, guid: 7c84387d69d027a448a14b92e337e8cd,
+        type: 3}
+      propertyPath: m_Name
+      value: building2 (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c84387d69d027a448a14b92e337e8cd, type: 3}
@@ -2685,8 +2683,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 094f01a9f5e9ef440b1a492a506a791a, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
@@ -2765,8 +2761,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: d40e0ba56daac234597ebd7a72d24b95, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -3319,11 +3313,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2005707954}
     m_Modifications:
-    - target: {fileID: 5473069542799267091, guid: 5f8c1da78a67e5a458390829ec5a40bf,
-        type: 3}
-      propertyPath: m_Name
-      value: building3 (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 5473069542798838067, guid: 5f8c1da78a67e5a458390829ec5a40bf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3378,6 +3367,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5473069542799267091, guid: 5f8c1da78a67e5a458390829ec5a40bf,
+        type: 3}
+      propertyPath: m_Name
+      value: building3 (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f8c1da78a67e5a458390829ec5a40bf, type: 3}
@@ -3700,11 +3694,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2005707954}
     m_Modifications:
-    - target: {fileID: 6188604347938469656, guid: 7c84387d69d027a448a14b92e337e8cd,
-        type: 3}
-      propertyPath: m_Name
-      value: building2 (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 6188604347938040632, guid: 7c84387d69d027a448a14b92e337e8cd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3759,6 +3748,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6188604347938469656, guid: 7c84387d69d027a448a14b92e337e8cd,
+        type: 3}
+      propertyPath: m_Name
+      value: building2 (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c84387d69d027a448a14b92e337e8cd, type: 3}
@@ -4295,11 +4289,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2005707954}
     m_Modifications:
-    - target: {fileID: 6188604347938469656, guid: 7c84387d69d027a448a14b92e337e8cd,
-        type: 3}
-      propertyPath: m_Name
-      value: building2 (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 6188604347938040632, guid: 7c84387d69d027a448a14b92e337e8cd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4354,6 +4343,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6188604347938469656, guid: 7c84387d69d027a448a14b92e337e8cd,
+        type: 3}
+      propertyPath: m_Name
+      value: building2 (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c84387d69d027a448a14b92e337e8cd, type: 3}
@@ -4502,11 +4496,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2005707954}
     m_Modifications:
-    - target: {fileID: 6188604347938469656, guid: 7c84387d69d027a448a14b92e337e8cd,
-        type: 3}
-      propertyPath: m_Name
-      value: building2 (4)
-      objectReference: {fileID: 0}
     - target: {fileID: 6188604347938040632, guid: 7c84387d69d027a448a14b92e337e8cd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4561,6 +4550,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6188604347938469656, guid: 7c84387d69d027a448a14b92e337e8cd,
+        type: 3}
+      propertyPath: m_Name
+      value: building2 (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c84387d69d027a448a14b92e337e8cd, type: 3}
@@ -4771,11 +4765,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2005707954}
     m_Modifications:
-    - target: {fileID: 6188604347938469656, guid: 7c84387d69d027a448a14b92e337e8cd,
-        type: 3}
-      propertyPath: m_Name
-      value: building2 (5)
-      objectReference: {fileID: 0}
     - target: {fileID: 6188604347938040632, guid: 7c84387d69d027a448a14b92e337e8cd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4830,6 +4819,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6188604347938469656, guid: 7c84387d69d027a448a14b92e337e8cd,
+        type: 3}
+      propertyPath: m_Name
+      value: building2 (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c84387d69d027a448a14b92e337e8cd, type: 3}
@@ -4996,11 +4990,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2005707954}
     m_Modifications:
-    - target: {fileID: 5473069542799267091, guid: 5f8c1da78a67e5a458390829ec5a40bf,
-        type: 3}
-      propertyPath: m_Name
-      value: building3 (4)
-      objectReference: {fileID: 0}
     - target: {fileID: 5473069542798838067, guid: 5f8c1da78a67e5a458390829ec5a40bf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5055,6 +5044,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5473069542799267091, guid: 5f8c1da78a67e5a458390829ec5a40bf,
+        type: 3}
+      propertyPath: m_Name
+      value: building3 (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f8c1da78a67e5a458390829ec5a40bf, type: 3}
@@ -5690,8 +5684,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 094f01a9f5e9ef440b1a492a506a791a, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
@@ -6400,8 +6392,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: e54f56e760031db4f92439782f96ea8c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -6641,8 +6631,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 094f01a9f5e9ef440b1a492a506a791a, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
@@ -8578,11 +8566,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2005707954}
     m_Modifications:
-    - target: {fileID: 5473069542799267091, guid: 5f8c1da78a67e5a458390829ec5a40bf,
-        type: 3}
-      propertyPath: m_Name
-      value: building3 (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 5473069542798838067, guid: 5f8c1da78a67e5a458390829ec5a40bf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8637,6 +8620,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5473069542799267091, guid: 5f8c1da78a67e5a458390829ec5a40bf,
+        type: 3}
+      propertyPath: m_Name
+      value: building3 (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f8c1da78a67e5a458390829ec5a40bf, type: 3}
@@ -9057,11 +9045,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2005707954}
     m_Modifications:
-    - target: {fileID: 5473069542799267091, guid: 5f8c1da78a67e5a458390829ec5a40bf,
-        type: 3}
-      propertyPath: m_Name
-      value: building3 (5)
-      objectReference: {fileID: 0}
     - target: {fileID: 5473069542798838067, guid: 5f8c1da78a67e5a458390829ec5a40bf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9116,6 +9099,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5473069542799267091, guid: 5f8c1da78a67e5a458390829ec5a40bf,
+        type: 3}
+      propertyPath: m_Name
+      value: building3 (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f8c1da78a67e5a458390829ec5a40bf, type: 3}
@@ -9628,8 +9616,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
@@ -9852,8 +9838,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 75a9f61bbe1a6ed44823d1579a9fcb8a, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
@@ -10085,10 +10069,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2005707954}
     m_Modifications:
-    - target: {fileID: 5473069542799267091, guid: 5f8c1da78a67e5a458390829ec5a40bf,
+    - target: {fileID: 5473069542798838065, guid: 5f8c1da78a67e5a458390829ec5a40bf,
         type: 3}
-      propertyPath: m_Name
-      value: building3
+      propertyPath: m_LocalPosition.z
+      value: -0.29
       objectReference: {fileID: 0}
     - target: {fileID: 5473069542798838067, guid: 5f8c1da78a67e5a458390829ec5a40bf,
         type: 3}
@@ -10145,10 +10129,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5473069542798838065, guid: 5f8c1da78a67e5a458390829ec5a40bf,
+    - target: {fileID: 5473069542799267091, guid: 5f8c1da78a67e5a458390829ec5a40bf,
         type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.29
+      propertyPath: m_Name
+      value: building3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f8c1da78a67e5a458390829ec5a40bf, type: 3}
@@ -10159,11 +10143,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2005707954}
     m_Modifications:
-    - target: {fileID: 6188604347938469656, guid: 7c84387d69d027a448a14b92e337e8cd,
-        type: 3}
-      propertyPath: m_Name
-      value: building2
-      objectReference: {fileID: 0}
     - target: {fileID: 6188604347938040632, guid: 7c84387d69d027a448a14b92e337e8cd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10219,6 +10198,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6188604347938469656, guid: 7c84387d69d027a448a14b92e337e8cd,
+        type: 3}
+      propertyPath: m_Name
+      value: building2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c84387d69d027a448a14b92e337e8cd, type: 3}
 --- !u!1001 &6375771819786800522
@@ -10228,11 +10212,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6375771820046061595, guid: d79791b0b16802f4c9a2e864a0b1fbb4,
+    - target: {fileID: 4022883515273170590, guid: d79791b0b16802f4c9a2e864a0b1fbb4,
         type: 3}
-      propertyPath: m_Name
-      value: Drone
+      propertyPath: m_Drag
+      value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 6375771820046061592, guid: d79791b0b16802f4c9a2e864a0b1fbb4,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1309295044}
+    - target: {fileID: 6375771820046061592, guid: d79791b0b16802f4c9a2e864a0b1fbb4,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 6882974753523773041, guid: 297da155dd097544cbf086514b64de45,
+        type: 3}
     - target: {fileID: 6375771820046061593, guid: d79791b0b16802f4c9a2e864a0b1fbb4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10288,22 +10283,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4022883515273170590, guid: d79791b0b16802f4c9a2e864a0b1fbb4,
+    - target: {fileID: 6375771820046061595, guid: d79791b0b16802f4c9a2e864a0b1fbb4,
         type: 3}
-      propertyPath: m_Drag
-      value: 100
+      propertyPath: m_Name
+      value: Drone
       objectReference: {fileID: 0}
-    - target: {fileID: 6375771820046061592, guid: d79791b0b16802f4c9a2e864a0b1fbb4,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1309295044}
-    - target: {fileID: 6375771820046061592, guid: d79791b0b16802f4c9a2e864a0b1fbb4,
-        type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 6882974753523773041, guid: 297da155dd097544cbf086514b64de45,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d79791b0b16802f4c9a2e864a0b1fbb4, type: 3}
 --- !u!1001 &8158689876843832890

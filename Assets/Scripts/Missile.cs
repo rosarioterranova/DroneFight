@@ -4,34 +4,44 @@ using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
-  public Transform target;   
-  public float speed = 10f;
-  public bool timeReversing = false;
+    [SerializeField] ParticleSystem explosion;
 
-  private  Stack<Vector3> positions = new Stack<Vector3>();
+    public Transform target;
+    public bool timeReversing = false;
 
-  void Update()
-  {
-    if(Input.GetKeyDown(KeyCode.Space))
+    private float speed = 10f;
+
+    private Stack<Vector3> positions = new Stack<Vector3>();
+
+    void Update()
     {
-      timeReversing = true;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            timeReversing = true;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            timeReversing = false;
+        }
+
+        if (!timeReversing)
+        {
+            Vector3 dir = target.position - transform.position;
+            transform.Translate(dir.normalized * (speed + Random.Range(-5, +5)) * Time.deltaTime, Space.World);
+            transform.LookAt(target);
+            positions.Push(transform.position);
+        }
+        else
+        {
+            transform.position = positions.Pop();
+        }
     }
 
-    if(Input.GetKeyUp(KeyCode.Space))
+    private void OnTriggerEnter(Collider other)
     {
-      timeReversing = false;
+        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        explosion.Play();
+        Destroy(gameObject,1f);
     }
-
-    if(!timeReversing)
-    {
-      Vector3 dir = target.position - transform.position;
-      transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
-      transform.LookAt(target);
-      positions.Push(transform.position);
-    }
-    else
-    {
-      transform.position = positions.Pop();
-    }
-  }
 }

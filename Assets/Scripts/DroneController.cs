@@ -14,8 +14,9 @@ public class DroneController : MonoBehaviour
     [SerializeField] private float rotationSpeedVertical = 2.0f;
     [SerializeField] private GameObject missile;
     [SerializeField] private Transform[] missileSpawnLocation;
+    [SerializeField] private float acquireEnemyDistance = 100f;
 
-    private GameObject target;
+    private GameObject target = null;
     private float yawRotation = 0.0f;
     private float pitchRotation = 0.0f;
     private ParticleSystem[] gunsParticles;
@@ -29,6 +30,16 @@ public class DroneController : MonoBehaviour
     {
         ProcessInput();
         Fly();
+
+        RaycastHit objectHit;
+        Vector3 fwd = transform.TransformDirection(Vector3.forward);
+        Debug.DrawRay(transform.position, fwd * 50, Color.green);
+        if (Physics.Raycast(transform.position, fwd, out objectHit, acquireEnemyDistance))
+        {
+            if(objectHit.transform.GetComponent<Turret>()){
+                target = objectHit.transform.gameObject;
+            }
+        }
     }
 
     private void ProcessInput()
@@ -86,8 +97,9 @@ public class DroneController : MonoBehaviour
         {
             for (int i = 0; i < 4; i++)
             {
-                GameObject b = Instantiate(missile, missileSpawnLocation[i].position,Quaternion.identity);
-                b.GetComponent<Missile>().target = target.transform;
+                GameObject missileObj = Instantiate(missile, missileSpawnLocation[i].position,Quaternion.identity);
+                missileObj.GetComponent<Missile>().target = target.transform;
+                Destroy(missileObj,4f);
             }
             OnSecondaryWeaponFire?.Invoke();
         }
