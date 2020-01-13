@@ -393,7 +393,7 @@ MonoBehaviour:
   rotationSpeedVertical: 2
   acquireEnemyDistance: 50
   cameraPitchClamp: 30
-  missile: {fileID: 6882974753523773041, guid: 297da155dd097544cbf086514b64de45, type: 3}
+  missile: {fileID: 8093893545761936506, guid: 3068d23a56fdb444e89bdc0b83ca015c, type: 3}
   missileSpawnLocation:
   - {fileID: 5128311921678229460}
   - {fileID: 455862397063714254}

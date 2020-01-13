@@ -45,7 +45,6 @@ public class Turret : MonoBehaviour, IEnemy
     public void DismissFire()
     {
         canFire = false;
-        EnableLockSprite(false);
     }
 
     public void Damage()

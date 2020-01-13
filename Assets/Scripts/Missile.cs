@@ -21,9 +21,12 @@ public class Missile : MonoBehaviour
 
     void Update()
     {
-        Vector3 dir = target.position - transform.position;
-        transform.Translate(dir.normalized * (speed + Random.Range(-5, +5)) * Time.deltaTime, Space.World);
-        transform.LookAt(target);
+        if(target != null)
+        {
+            Vector3 dir = target.position - transform.position;
+            transform.Translate(dir.normalized * (speed + Random.Range(-5, +5)) * Time.deltaTime, Space.World);
+            transform.LookAt(target);
+        }
 
         // if (!timeReversing)
         // {
@@ -40,9 +43,11 @@ public class Missile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other);
         IEnemy target = other.GetComponent<IEnemy>();
-        if(target !=null & target == other.GetComponent<IEnemy>())
+        if(target !=null)
         {
+            Debug.Log("missile target enemy");
             other.GetComponent<IEnemy>().Damage();
             Explode();
         }
