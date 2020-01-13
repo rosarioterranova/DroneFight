@@ -51,6 +51,63 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &536684093389148860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7134709630745320287}
+  - component: {fileID: 1060632425938970891}
+  - component: {fileID: 1585988310251505291}
+  m_Layer: 0
+  m_Name: DroneSight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7134709630745320287
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536684093389148860}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6375771820046061593}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1060632425938970891
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536684093389148860}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 30
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1585988310251505291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536684093389148860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393b5f557db6ee2489581562670dee75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &591603748715926766
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,6 +370,7 @@ Transform:
   - {fileID: 4838345763109297356}
   - {fileID: 8570619926009058375}
   - {fileID: 1151745211062319678}
+  - {fileID: 7134709630745320287}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -328,6 +386,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f302ab591c9d84aa7692a4927bb123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSpeed: 10
+  dashMultiply: 4
+  timeToDoublePress: 1
+  rotationSpeedHorizontal: 2
+  rotationSpeedVertical: 2
+  acquireEnemyDistance: 50
+  cameraPitchClamp: 30
   missile: {fileID: 6882974753523773041, guid: 297da155dd097544cbf086514b64de45, type: 3}
   missileSpawnLocation:
   - {fileID: 5128311921678229460}

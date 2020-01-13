@@ -2,46 +2,71 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour
+public class Turret : MonoBehaviour, IEnemy
 {
     [SerializeField] private GameObject topTurret;
     [SerializeField] private GameObject missile;
     [SerializeField] private Transform[] missileSpawnPositions;
-    [SerializeField] GameObject targetSprite;
+    [SerializeField] private GameObject lockSprite;
+    [SerializeField] private ParticleSystem explosion;
+    [SerializeField] private float rotationSpeed = 10f;
+    [SerializeField] private float lockdown = 2f;
+    [SerializeField] private float cooldown = 5f;
 
-    private float rotationSpeed = 10f;
-    private TurretSight turretSight;
-    private float lockdown = 2f;
-    private float cooldown = 5f;
+    private TurretSight sight;
     private bool canFire = false;
-    private bool targetSpriteEnabled = false;
+    private bool lockSpriteEnabled = false;
     
     private void Awake()
     {
-        turretSight = GetComponentInChildren<TurretSight>();
-        turretSight.OnPlayerOnSight += StartFire;
-        turretSight.OnPlayerLostSight += DismissFire;
+        sight = GetComponentInChildren<TurretSight>();
+        sight.OnPlayerOnSight += Fire;
+        sight.OnPlayerLostSight += DismissFire;
     }
 
     private void Update()
     {
-        if(turretSight.Target != null)
+        if(sight.Target != null)
         {
-            Quaternion lookRotation = Quaternion.LookRotation(turretSight.Target.transform.position - topTurret.transform.position);
+            Quaternion lookRotation = Quaternion.LookRotation(sight.Target.transform.position - topTurret.transform.position);
             topTurret.transform.rotation =  Quaternion.Slerp(topTurret.transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
         }
 
-        if(targetSpriteEnabled)
-            targetSprite.transform.LookAt(Camera.main.transform.position, Vector3.up);
+        if(lockSpriteEnabled)
+            lockSprite.transform.LookAt(Camera.main.transform.position, Vector3.up);
     }
 
-    private void StartFire()
+    public void Fire()
     {
         canFire = true;
-        StartCoroutine(Fire());
+        StartCoroutine(FireRate());
     }
 
-    private IEnumerator Fire()
+    public void DismissFire()
+    {
+        canFire = false;
+        EnableLockSprite(false);
+    }
+
+    public void Damage()
+    {
+        GetComponentInChildren<MeshRenderer>().enabled = false;
+        explosion.Play();
+        Destroy(gameObject,1f);
+    }
+
+    public void EnableLockSprite(bool enabled)
+    {
+        lockSpriteEnabled = enabled;
+        lockSprite.SetActive(enabled);
+    }
+
+    public GameObject GameObject
+    {
+        get => gameObject;
+    }
+
+    private IEnumerator FireRate()
     {
         yield return new WaitForSecondsRealtime(lockdown);
         while(canFire)
@@ -51,16 +76,10 @@ public class Turret : MonoBehaviour
         }
     }
 
-    private void DismissFire()
-    {
-        canFire = false;
-        EnableTargetSprite(false);
-    }
-
     private void OnDestroy()
     {
-        turretSight.OnPlayerOnSight -= StartFire;
-        turretSight.OnPlayerOnSight -= DismissFire;
+        sight.OnPlayerOnSight -= Fire;
+        sight.OnPlayerOnSight -= DismissFire;
     }
 
     private void ShotMissiles()
@@ -71,16 +90,5 @@ public class Turret : MonoBehaviour
                 missileObj.GetComponent<Missile>().target = FindObjectOfType<DroneController>().transform;
                 Destroy(missileObj,4f);
             }
-    }
-
-    public void Damage()
-    {
-        Destroy(gameObject);
-    }
-
-    public void EnableTargetSprite(bool enabled)
-    {
-        targetSpriteEnabled = enabled;
-        targetSprite.SetActive(enabled);
     }
 }    
