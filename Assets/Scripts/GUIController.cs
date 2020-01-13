@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class GUIController : MonoBehaviour
 {
-
     [SerializeField] Image primaryWeaponUI;
     [SerializeField] Image secondaryWeaponUI;
     [SerializeField] Image specialWeaponUI;
+    [SerializeField] Text turretsText;
 
     [SerializeField] private DroneController droneController;
     
@@ -17,21 +17,17 @@ public class GUIController : MonoBehaviour
     private void Awake()
     {
         droneController.OnPrimaryWeaponFire += PrimaryWeaponShoted;
-    }
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
+        droneController.OnSecondaryWeaponFire += SecondaryWeaponShoted;
     }
 
     private void PrimaryWeaponShoted()
     {
         StartCoroutine(FillImage(primaryWeaponUI,1f));
+    }
+
+    private void SecondaryWeaponShoted()
+    {
+        StartCoroutine(FillImage(secondaryWeaponUI,droneController.MissileCooldown));
     }
 
     private IEnumerator FillImage(Image image, float time)
@@ -42,5 +38,10 @@ public class GUIController : MonoBehaviour
             image.fillAmount +=.1f;
             yield return new WaitForSecondsRealtime(time/10);
         }
+    }
+
+    public void UpdateTurretText(int totalTurrets, int actualTurrets)
+    {
+        turretsText.text = $"{actualTurrets}/{totalTurrets}";
     }
 }

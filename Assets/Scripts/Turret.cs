@@ -1,9 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Turret : MonoBehaviour, IEnemy
 {
+
+    public Action OnTurretDestroyed;
+
     [SerializeField] private GameObject topTurret;
     [SerializeField] private GameObject missile;
     [SerializeField] private Transform[] missileSpawnPositions;
@@ -16,6 +20,7 @@ public class Turret : MonoBehaviour, IEnemy
     private TurretSight sight;
     private bool canFire = false;
     private bool lockSpriteEnabled = false;
+    private bool hitted = false;
     
     private void Awake()
     {
@@ -49,8 +54,12 @@ public class Turret : MonoBehaviour, IEnemy
 
     public void Damage()
     {
-        GetComponentInChildren<MeshRenderer>().enabled = false;
+        if(hitted) return;
+        var renderMeshes = GetComponentsInChildren<MeshRenderer>();
+        Array.ForEach(renderMeshes, render => render.enabled = false);
         explosion.Play();
+        hitted = true;
+        OnTurretDestroyed?.Invoke();
         Destroy(gameObject,1f);
     }
 
@@ -84,10 +93,9 @@ public class Turret : MonoBehaviour, IEnemy
     private void ShotMissiles()
     {
         for (int i = 0; i < 4; i++)
-            {
-                GameObject missileObj = Instantiate(missile, missileSpawnPositions[i].position,Quaternion.identity);
-                missileObj.GetComponent<Missile>().target = FindObjectOfType<DroneController>().transform;
-                Destroy(missileObj,4f);
-            }
+        {
+            GameObject missileObj = Instantiate(missile, missileSpawnPositions[i].position,Quaternion.identity);
+            missileObj.GetComponent<Missile>().target = FindObjectOfType<DroneController>().transform; //TODO fix ref
+        }
     }
 }    

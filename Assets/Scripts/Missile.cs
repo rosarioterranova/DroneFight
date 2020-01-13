@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
-    [SerializeField] ParticleSystem explosion;
-    [SerializeField] float lifeTime = 8f;
+    [SerializeField] private ParticleSystem explosion;
+    [SerializeField] private float lifeTime = 8f;
+    [SerializeField] private float speed = 10f;
+    [SerializeField] private bool enemyMissile = false;
+
+    private Vector3 targetDirectionStart;
 
     public Transform target;
+
     //public bool timeReversing = false;
 
-    private float speed = 10f;
+    
     //private Stack<Vector3> positions = new Stack<Vector3>();
 
     IEnumerator Start()
     {
+        targetDirectionStart = target.position - transform.position;
+        transform.LookAt(target);
         yield return new WaitForSeconds(lifeTime);
         Explode();
     }
@@ -23,11 +30,18 @@ public class Missile : MonoBehaviour
     {
         if(target != null)
         {
-            Vector3 dir = target.position - transform.position;
-            transform.Translate(dir.normalized * (speed + Random.Range(-5, +5)) * Time.deltaTime, Space.World);
-            transform.LookAt(target);
+            if(!enemyMissile)
+            {
+                Vector3 direction = target.position - transform.position;
+                transform.Translate(direction.normalized * (speed + Random.Range(-5, +5)) * Time.deltaTime, Space.World);
+                transform.LookAt(target);
+            }
+            else
+            {
+                transform.Translate(targetDirectionStart.normalized * (speed + Random.Range(-5, +5)) * Time.deltaTime, Space.World);
+            }
         }
-
+        
         // if (!timeReversing)
         // {
         //     Vector3 dir = target.position - transform.position;
@@ -43,13 +57,15 @@ public class Missile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other);
-        IEnemy target = other.GetComponent<IEnemy>();
-        if(target !=null)
+        if(!enemyMissile)
         {
-            Debug.Log("missile target enemy");
-            other.GetComponent<IEnemy>().Damage();
-            Explode();
+            IEnemy target = other.GetComponent<IEnemy>();
+            if(target !=null)
+            {
+                Debug.Log("missile target enemy");
+                other.GetComponent<IEnemy>().Damage();
+                Explode();
+            }
         }
     }
 

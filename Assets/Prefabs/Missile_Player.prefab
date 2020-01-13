@@ -12,10 +12,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5668059870252524273, guid: 42be7b80f3f983b4499307aa9d14b423,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.10196078
+      objectReference: {fileID: 0}
+    - target: {fileID: 5668059870252524273, guid: 42be7b80f3f983b4499307aa9d14b423,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.93333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 5668059870252524273, guid: 42be7b80f3f983b4499307aa9d14b423,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.8101455
+      objectReference: {fileID: 0}
     - target: {fileID: 6882974753523773041, guid: 42be7b80f3f983b4499307aa9d14b423,
         type: 3}
       propertyPath: m_Name
-      value: Missile_Player 1
+      value: Missile_Player
       objectReference: {fileID: 0}
     - target: {fileID: 7920955138899063770, guid: 42be7b80f3f983b4499307aa9d14b423,
         type: 3}

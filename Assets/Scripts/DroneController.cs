@@ -7,6 +7,10 @@ public class DroneController : MonoBehaviour
 {
     public Action OnPrimaryWeaponFire;
     public Action OnSecondaryWeaponFire;
+    public float MissileCooldown
+    {
+        get => missileCooldown;
+    }
 
     [SerializeField] private float movementSpeed = 10f;
     [SerializeField] private float dashMultiply = 4f;
@@ -17,6 +21,7 @@ public class DroneController : MonoBehaviour
     [SerializeField] private float cameraPitchClamp = 30f;
     [SerializeField] private GameObject missile;
     [SerializeField] private Transform[] missileSpawnLocation;
+    [SerializeField] private float missileCooldown = 3f;
 
     private IEnemy enemyInRay = null;
     private IEnemy enemyInRange = null;
@@ -24,6 +29,7 @@ public class DroneController : MonoBehaviour
     private float pitchRotation = 0.0f;
     private ParticleSystem[] gunsParticles;
     private DroneSight droneSight;
+    private bool missileShooted = false;
 
     //Dash values
     private bool canDash = true;
@@ -109,15 +115,16 @@ public class DroneController : MonoBehaviour
         //Fire 2 (missiles)
         if(Input.GetButtonUp(fire2Button))
         {
-            if(enemyInRange == null)
-                return;
+            if(enemyInRange == null || missileShooted) return;
             OnSecondaryWeaponFire?.Invoke();
-
+            missileShooted = true;
+            StartCoroutine(missileCooldownTimer());
             for (int i = 0; i < missileSpawnLocation.Length; i++)
             {
                 GameObject missileObj = Instantiate(missile, missileSpawnLocation[i].position,Quaternion.identity);
                 missileObj.GetComponent<Missile>().target = enemyInRange.GameObject.transform;
             }
+            enemyInRange = null;
         }
 
         //Fire 3 (special)
@@ -161,5 +168,11 @@ public class DroneController : MonoBehaviour
                 enemyInRay = null;
             }
         }
+    }
+
+    IEnumerator missileCooldownTimer()
+    {
+        yield return new WaitForSecondsRealtime(missileCooldown);
+        missileShooted = false;
     }
 }
