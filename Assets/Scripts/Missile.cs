@@ -8,8 +8,11 @@ public class Missile : MonoBehaviour
     [SerializeField] private float lifeTime = 8f;
     [SerializeField] private float speed = 10f;
     [SerializeField] private bool enemyMissile = false;
+    [SerializeField] private AudioClip start;
+    [SerializeField] private AudioClip explode;
 
     private Vector3 targetDirectionStart;
+    private AudioSource audioSource;
 
     public Transform target;
 
@@ -18,8 +21,14 @@ public class Missile : MonoBehaviour
     
     //private Stack<Vector3> positions = new Stack<Vector3>();
 
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     IEnumerator Start()
     {
+        audioSource.PlayOneShot(start,0.5f);
         targetDirectionStart = target.position - transform.position;
         transform.LookAt(target);
         yield return new WaitForSeconds(lifeTime);
@@ -75,6 +84,7 @@ public class Missile : MonoBehaviour
 
     private void Explode()
     {
+        audioSource.PlayOneShot(explode);
         gameObject.transform.GetChild(0).gameObject.SetActive(false);
         explosion.Play();
         Destroy(gameObject,1f);

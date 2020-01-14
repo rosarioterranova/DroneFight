@@ -30,6 +30,7 @@ public class DroneController : MonoBehaviour
     private ParticleSystem[] gunsParticles;
     private DroneSight droneSight;
     private bool missileShooted = false;
+    private AudioSource audioSourceGun;
 
     //Dash values
     private bool canDash = true;
@@ -52,6 +53,7 @@ public class DroneController : MonoBehaviour
     {
         gunsParticles = GetComponentsInChildren<ParticleSystem>();
         droneSight = GetComponentInChildren<DroneSight>();
+        audioSourceGun = GetComponent<AudioSource>();
 
         droneSight.OnEnemyOnSight += enemy => enemyInRange = enemy;
         droneSight.OnEnemyLostSight += enemy => enemyInRange = null;
@@ -102,6 +104,7 @@ public class DroneController : MonoBehaviour
             foreach (var particle in gunsParticles)
             {
                 particle.Play();
+                audioSourceGun.Play();
             }
         }
         if(Input.GetButtonUp(fire1Button))
@@ -109,6 +112,7 @@ public class DroneController : MonoBehaviour
             foreach (var particle in gunsParticles)
             {
                 particle.Stop();
+                audioSourceGun.Stop();
             }
         }
         

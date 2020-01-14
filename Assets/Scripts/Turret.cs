@@ -21,12 +21,14 @@ public class Turret : MonoBehaviour, IEnemy
     private bool canFire = false;
     private bool lockSpriteEnabled = false;
     private bool hitted = false;
+    private AudioSource audioSource;
     
     private void Awake()
     {
         sight = GetComponentInChildren<TurretSight>();
         sight.OnPlayerOnSight += Fire;
         sight.OnPlayerLostSight += DismissFire;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -58,6 +60,7 @@ public class Turret : MonoBehaviour, IEnemy
         var renderMeshes = GetComponentsInChildren<MeshRenderer>();
         Array.ForEach(renderMeshes, render => render.enabled = false);
         explosion.Play();
+        audioSource.Play();
         hitted = true;
         OnTurretDestroyed?.Invoke();
         Destroy(gameObject,1f);
