@@ -13,6 +13,7 @@ public class Missile : MonoBehaviour
 
     private Vector3 targetDirectionStart;
     private AudioSource audioSource;
+    private bool hit = false;
 
     public Transform target;
 
@@ -73,11 +74,12 @@ public class Missile : MonoBehaviour
             {
                 other.GetComponent<IEnemy>().Damage();
                 Explode();
+                hit = true;
             }
         }
         else if(other.gameObject.layer == 10)
         {
-            Debug.Log("Hit");
+            other.GetComponent<DroneController>().Damage();
             Explode();
         }
     }

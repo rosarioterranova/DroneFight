@@ -7,6 +7,14 @@ public class DroneController : MonoBehaviour
 {
     public Action OnPrimaryWeaponFire;
     public Action OnSecondaryWeaponFire;
+    public Action OnPlayerDamage;
+    public Action OnRewind;
+
+    public int PlayerLife
+    {
+        get => life;
+    }
+
     public float MissileCooldown
     {
         get => missileCooldown;
@@ -20,8 +28,9 @@ public class DroneController : MonoBehaviour
     [SerializeField] private float acquireEnemyDistance = 50f;
     [SerializeField] private float cameraPitchClamp = 30f;
     [SerializeField] private GameObject missile;
-    [SerializeField] private Transform[] missileSpawnLocation;
+    [SerializeField] private Transform missileSpawnLocation;
     [SerializeField] private float missileCooldown = 3f;
+    [SerializeField] private int life = 5;
 
     private IEnemy enemyInRay = null;
     private IEnemy enemyInRange = null;
@@ -123,11 +132,8 @@ public class DroneController : MonoBehaviour
             OnSecondaryWeaponFire?.Invoke();
             missileShooted = true;
             StartCoroutine(missileCooldownTimer());
-            for (int i = 0; i < missileSpawnLocation.Length; i++)
-            {
-                GameObject missileObj = Instantiate(missile, missileSpawnLocation[i].position,Quaternion.identity);
-                missileObj.GetComponent<Missile>().target = enemyInRange.GameObject.transform;
-            }
+            GameObject missileObj = Instantiate(missile, missileSpawnLocation.position,Quaternion.identity);
+            missileObj.GetComponent<Missile>().target = enemyInRange.GameObject.transform;
             enemyInRange = null;
         }
 
@@ -180,5 +186,15 @@ public class DroneController : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(missileCooldown);
         missileShooted = false;
+    }
+
+    public void Damage()
+    {
+        life--;
+        OnPlayerDamage?.Invoke();
+        if(life==0)
+        {
+            Debug.Log("GAME OVER");
+        }
     }
 }

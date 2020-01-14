@@ -10,7 +10,7 @@ public class Turret : MonoBehaviour, IEnemy
 
     [SerializeField] private GameObject topTurret;
     [SerializeField] private GameObject missile;
-    [SerializeField] private Transform[] missileSpawnPositions;
+    [SerializeField] private Transform missileSpawnLocation;
     [SerializeField] private GameObject lockSprite;
     [SerializeField] private ParticleSystem explosion;
     [SerializeField] private float rotationSpeed = 10f;
@@ -95,10 +95,7 @@ public class Turret : MonoBehaviour, IEnemy
 
     private void ShotMissiles()
     {
-        for (int i = 0; i < 4; i++)
-        {
-            GameObject missileObj = Instantiate(missile, missileSpawnPositions[i].position,Quaternion.identity);
-            missileObj.GetComponent<Missile>().target = FindObjectOfType<DroneController>().transform; //TODO fix ref
-        }
+        GameObject missileObj = Instantiate(missile, missileSpawnLocation.position,Quaternion.identity);
+        missileObj.GetComponent<Missile>().target = FindObjectOfType<DroneController>().transform; //TODO fix ref
     }
 }    

@@ -3917,6 +3917,8 @@ MonoBehaviour:
   secondaryWeaponUI: {fileID: 1509690259}
   specialWeaponUI: {fileID: 631383631}
   turretsText: {fileID: 1436698203}
+  lifeUI: {fileID: 2099170843}
+  lifeText: {fileID: 2076442197}
   droneController: {fileID: 1952884789}
 --- !u!1 &864326285
 GameObject:
@@ -7695,6 +7697,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Turret
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434497073008372129, guid: 240385fa86a1dac4db6c740a3cdf1c7d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4369271482106518924, guid: 240385fa86a1dac4db6c740a3cdf1c7d,
         type: 3}
