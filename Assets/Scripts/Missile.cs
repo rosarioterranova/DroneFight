@@ -62,10 +62,14 @@ public class Missile : MonoBehaviour
             IEnemy target = other.GetComponent<IEnemy>();
             if(target !=null)
             {
-                Debug.Log("missile target enemy");
                 other.GetComponent<IEnemy>().Damage();
                 Explode();
             }
+        }
+        else if(other.gameObject.layer == 10)
+        {
+            Debug.Log("Hit");
+            Explode();
         }
     }
 

@@ -4762,7 +4762,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 5668059870252524273}
   lifeTime: 8
-  speed: 10
+  speed: 40
   enemyMissile: 1
   target: {fileID: 0}
 --- !u!54 &7317622130518989308

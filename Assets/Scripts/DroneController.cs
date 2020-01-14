@@ -157,8 +157,10 @@ public class DroneController : MonoBehaviour
     {
         RaycastHit objectHit;
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * acquireEnemyDistance, Color.green);
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out objectHit, acquireEnemyDistance))
+        int layerMask = LayerMask.GetMask("Turret");
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out objectHit, acquireEnemyDistance,layerMask))
         {
+            Debug.Log(objectHit.transform);
             if(objectHit.transform.GetComponent<IEnemy>() !=null)
             {
                 enemyInRay = objectHit.transform.GetComponent<IEnemy>();

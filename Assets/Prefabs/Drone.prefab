@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5304898319616442413}
   - component: {fileID: 1372556128625687151}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: propellerRoot (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 455862397063714254}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MissileSpawnLocation1
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -147,7 +147,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8570619926009058375}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BulletsParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3795343622031419871}
   - component: {fileID: 1935516858332241530}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: propellerRoot (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ GameObject:
   m_Component:
   - component: {fileID: 763757436528860527}
   - component: {fileID: 9053706175529377689}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: propellerRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,7 +281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4838345763109297356}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Propellers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,7 +315,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1850605200557423108}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MissileSpawnLocation3
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 6375771820046061592}
   - component: {fileID: 1980164139094676797}
   - component: {fileID: 4022883515273170590}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Drone
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -391,7 +391,7 @@ MonoBehaviour:
   timeToDoublePress: 1
   rotationSpeedHorizontal: 2
   rotationSpeedVertical: 2
-  acquireEnemyDistance: 20
+  acquireEnemyDistance: 40
   cameraPitchClamp: 30
   missile: {fileID: 8093893545761936506, guid: 3068d23a56fdb444e89bdc0b83ca015c, type: 3}
   missileSpawnLocation:
@@ -439,7 +439,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1802163664054371456}
   - component: {fileID: 1442078838324573327}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: propellerRoot (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -489,7 +489,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5128311921678229460}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MissileSpawnLocation0
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -519,7 +519,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1151745211062319678}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MissileSpawnLocation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -553,7 +553,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8147884236240092354}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MissileSpawnLocation2
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -581,9 +581,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5304898319616442413}
     m_Modifications:
+    - target: {fileID: 100000, guid: a72073f35486bca4eb0ea82266962fe2, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: a72073f35486bca4eb0ea82266962fe2, type: 3}
       propertyPath: m_Name
       value: propeller (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: a72073f35486bca4eb0ea82266962fe2, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: a72073f35486bca4eb0ea82266962fe2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -656,9 +664,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3795343622031419871}
     m_Modifications:
+    - target: {fileID: 100000, guid: a72073f35486bca4eb0ea82266962fe2, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: a72073f35486bca4eb0ea82266962fe2, type: 3}
       propertyPath: m_Name
       value: propeller (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: a72073f35486bca4eb0ea82266962fe2, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: a72073f35486bca4eb0ea82266962fe2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -731,9 +747,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1802163664054371456}
     m_Modifications:
+    - target: {fileID: 100000, guid: a72073f35486bca4eb0ea82266962fe2, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: a72073f35486bca4eb0ea82266962fe2, type: 3}
       propertyPath: m_Name
       value: propeller (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: a72073f35486bca4eb0ea82266962fe2, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: a72073f35486bca4eb0ea82266962fe2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -810,6 +834,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bullets (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1234473006561594, guid: af881ba020e89d549b36d907c72512ff, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4670828020327360, guid: af881ba020e89d549b36d907c72512ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.1989998
@@ -881,9 +909,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 763757436528860527}
     m_Modifications:
+    - target: {fileID: 100000, guid: a72073f35486bca4eb0ea82266962fe2, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: a72073f35486bca4eb0ea82266962fe2, type: 3}
       propertyPath: m_Name
       value: propeller (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: a72073f35486bca4eb0ea82266962fe2, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: a72073f35486bca4eb0ea82266962fe2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -960,6 +996,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bullets
       objectReference: {fileID: 0}
+    - target: {fileID: 1234473006561594, guid: af881ba020e89d549b36d907c72512ff, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4670828020327360, guid: af881ba020e89d549b36d907c72512ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.18100001
@@ -1019,9 +1059,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6375771820046061593}
     m_Modifications:
+    - target: {fileID: 100000, guid: da72d29d80c2d364ba81de2025d214de, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: da72d29d80c2d364ba81de2025d214de, type: 3}
       propertyPath: m_Name
       value: drone
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: da72d29d80c2d364ba81de2025d214de, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: da72d29d80c2d364ba81de2025d214de, type: 3}
       propertyPath: m_LocalPosition.x
