@@ -8,6 +8,7 @@ public class DroneController : MonoBehaviour
     public Action OnPrimaryWeaponFire;
     public Action OnSecondaryWeaponFire;
     public Action OnPlayerDamage;
+    public Action OnDroneDestroid;
     static public Action OnRewindStart;
     static public Action OnRewindFinish;
 
@@ -209,7 +210,7 @@ public class DroneController : MonoBehaviour
         OnPlayerDamage?.Invoke();
         if(life==0)
         {
-            Debug.Log("GAME OVER");
+            OnDroneDestroid?.Invoke();
         }
     }
 
