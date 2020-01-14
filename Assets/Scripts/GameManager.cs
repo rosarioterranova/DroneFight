@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     
     private void Start()
     {
+        Cursor.visible = false;
         var turrets = FindObjectsOfType<Turret>();
         totalTurrets = actualTurrets = turrets.Length;
         foreach (var turret in turrets)
@@ -38,12 +39,14 @@ public class GameManager : MonoBehaviour
     private void Win()
     {
         Time.timeScale = 0;
+        Cursor.visible = true;
         winScreen.SetActive(true);
     }
 
     private void GameOver()
     {
         Time.timeScale = 0;
+        Cursor.visible = true;
         gameOverScreen.SetActive(true);
     }
 
