@@ -434,7 +434,10 @@ MonoBehaviour:
   missile: {fileID: 8093893545761936506, guid: 3068d23a56fdb444e89bdc0b83ca015c, type: 3}
   missileSpawnLocation: {fileID: 5128311921678229460}
   missileCooldown: 3
+  rewindDuration: 3
+  rewindCooldown: 20
   life: 5
+  rewind: {fileID: 8300000, guid: e2d14a434ce59a845809e6fb5dafeede, type: 3}
 --- !u!65 &1980164139094676797
 BoxCollider:
   m_ObjectHideFlags: 0

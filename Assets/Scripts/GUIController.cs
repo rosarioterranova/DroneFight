@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class GUIController : MonoBehaviour
 {
-    [SerializeField] Image primaryWeaponUI;
-    [SerializeField] Image secondaryWeaponUI;
-    [SerializeField] Image specialWeaponUI;
-    [SerializeField] Text turretsText;
-    [SerializeField] Image lifeUI;
-    [SerializeField] Text lifeText;
+    [SerializeField] private Image primaryWeaponUI;
+    [SerializeField] private Image secondaryWeaponUI;
+    [SerializeField] private Image specialWeaponUI;
+    [SerializeField] private Text turretsText;
+    [SerializeField] private Image lifeUI;
+    [SerializeField] private Text lifeText;
     [SerializeField] private DroneController droneController;
+    [SerializeField] private GameObject rewindEffect;
     
     private bool primaryWeaponReady = true;
     private int totalPlayerLife;
@@ -20,6 +21,8 @@ public class GUIController : MonoBehaviour
     {
         droneController.OnPrimaryWeaponFire += PrimaryWeaponShoted;
         droneController.OnSecondaryWeaponFire += SecondaryWeaponShoted;
+        DroneController.OnRewindStart += SpecialWeaponShoted;
+        DroneController.OnRewindFinish += SpecialWeaponFinish;
         droneController.OnPlayerDamage += UpdatePlayerLife;
         totalPlayerLife = droneController.PlayerLife;
     }
@@ -39,6 +42,17 @@ public class GUIController : MonoBehaviour
         StartCoroutine(FillImage(secondaryWeaponUI,droneController.MissileCooldown));
     }
 
+    private void SpecialWeaponShoted()
+    {
+        rewindEffect.SetActive(true);
+        StartCoroutine(FillImage(specialWeaponUI,droneController.RewindCooldown));
+    }
+
+    private void SpecialWeaponFinish()
+    {
+        rewindEffect.SetActive(false);
+    }
+
     private IEnumerator FillImage(Image image, float time)
     {
         image.fillAmount = 0;
@@ -53,9 +67,8 @@ public class GUIController : MonoBehaviour
     {
         if(droneController.PlayerLife == 0)
             lifeUI.fillAmount = 0;
-        else{
+        else
             lifeUI.fillAmount = (float)droneController.PlayerLife/(float)totalPlayerLife;
-        }
         lifeText.text = $"{droneController.PlayerLife*10}/{totalPlayerLife*10}";
     }
 

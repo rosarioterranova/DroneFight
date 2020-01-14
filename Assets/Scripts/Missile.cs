@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,17 +15,18 @@ public class Missile : MonoBehaviour
     private Vector3 targetDirectionStart;
     private AudioSource audioSource;
     private bool hit = false;
+    private Vector3[] positions;
+    private int positionIndex = 0;
 
     public Transform target;
-
-    //public bool timeReversing = false;
-
-    
-    //private Stack<Vector3> positions = new Stack<Vector3>();
+    public bool timeReversing = false;
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        DroneController.OnRewindStart += () => timeReversing = true;
+        DroneController.OnRewindFinish += () => { timeReversing = false; Array.Clear(positions,0,positions.Length);};
+        positions = new Vector3[90];
     }
 
     IEnumerator Start()
@@ -38,31 +40,33 @@ public class Missile : MonoBehaviour
 
     void Update()
     {
-        if(target != null)
+        if (timeReversing)
         {
-            if(!enemyMissile)
-            {
-                Vector3 direction = target.position - transform.position;
-                transform.Translate(direction.normalized * (speed + Random.Range(-5, +5)) * Time.deltaTime, Space.World);
-                transform.LookAt(target);
-            }
-            else
-            {
-                transform.Translate(targetDirectionStart.normalized * (speed + Random.Range(-5, +5)) * Time.deltaTime, Space.World);
-            }
+            transform.position = positions[positionIndex];
+            if(positionIndex == 0) positionIndex = positions.Length -1;
+            positionIndex--;
         }
-        
-        // if (!timeReversing)
-        // {
-        //     Vector3 dir = target.position - transform.position;
-        //     transform.Translate(dir.normalized * (speed + Random.Range(-5, +5)) * Time.deltaTime, Space.World);
-        //     transform.LookAt(target);
-        //     positions.Push(transform.position);
-        // }
-        // else
-        // {
-        //     transform.position = positions.Pop();
-        // }
+        else
+        {
+            if(target != null)
+            {
+                if(!enemyMissile)
+                {
+                    Vector3 direction = target.position - transform.position;
+                    transform.Translate(direction.normalized * (speed + UnityEngine.Random.Range(-5, +5)) * Time.deltaTime, Space.World);
+                    transform.LookAt(target);
+                }
+                else
+                {
+                    transform.Translate(targetDirectionStart.normalized * (speed + UnityEngine.Random.Range(-5, +5)) * Time.deltaTime, Space.World);
+                }
+            }
+
+            //Save positions for time reversing
+            if(positionIndex == positions.Length) positionIndex = 0;
+            positions[positionIndex] = transform.position;
+            positionIndex++;
+        }
     }
 
     private void OnTriggerEnter(Collider other)

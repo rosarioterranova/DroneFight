@@ -8,7 +8,8 @@ public class DroneController : MonoBehaviour
     public Action OnPrimaryWeaponFire;
     public Action OnSecondaryWeaponFire;
     public Action OnPlayerDamage;
-    public Action OnRewind;
+    static public Action OnRewindStart;
+    static public Action OnRewindFinish;
 
     public int PlayerLife
     {
@@ -18,6 +19,16 @@ public class DroneController : MonoBehaviour
     public float MissileCooldown
     {
         get => missileCooldown;
+    }
+
+    public float RewindCooldown
+    {
+        get => rewindCooldown;
+    }
+
+    public float RewindDuration
+    {
+        get => rewindDuration;
     }
 
     [SerializeField] private float movementSpeed = 10f;
@@ -30,7 +41,10 @@ public class DroneController : MonoBehaviour
     [SerializeField] private GameObject missile;
     [SerializeField] private Transform missileSpawnLocation;
     [SerializeField] private float missileCooldown = 3f;
+    [SerializeField] private float rewindDuration = 3f;
+    [SerializeField] private float rewindCooldown = 20f;
     [SerializeField] private int life = 5;
+    [SerializeField] private AudioClip rewind;
 
     private IEnemy enemyInRay = null;
     private IEnemy enemyInRange = null;
@@ -39,7 +53,8 @@ public class DroneController : MonoBehaviour
     private ParticleSystem[] gunsParticles;
     private DroneSight droneSight;
     private bool missileShooted = false;
-    private AudioSource audioSourceGun;
+    private AudioSource audioSource;
+    private bool canRewind = true;
 
     //Dash values
     private bool canDash = true;
@@ -62,7 +77,7 @@ public class DroneController : MonoBehaviour
     {
         gunsParticles = GetComponentsInChildren<ParticleSystem>();
         droneSight = GetComponentInChildren<DroneSight>();
-        audioSourceGun = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
 
         droneSight.OnEnemyOnSight += enemy => enemyInRange = enemy;
         droneSight.OnEnemyLostSight += enemy => enemyInRange = null;
@@ -113,7 +128,7 @@ public class DroneController : MonoBehaviour
             foreach (var particle in gunsParticles)
             {
                 particle.Play();
-                audioSourceGun.Play();
+                audioSource.Play();
             }
         }
         if(Input.GetButtonUp(fire1Button))
@@ -121,7 +136,7 @@ public class DroneController : MonoBehaviour
             foreach (var particle in gunsParticles)
             {
                 particle.Stop();
-                audioSourceGun.Stop();
+                audioSource.Stop();
             }
         }
         
@@ -131,7 +146,7 @@ public class DroneController : MonoBehaviour
             if(enemyInRange == null || missileShooted) return;
             OnSecondaryWeaponFire?.Invoke();
             missileShooted = true;
-            StartCoroutine(missileCooldownTimer());
+            StartCoroutine(MissileCooldownTimer());
             GameObject missileObj = Instantiate(missile, missileSpawnLocation.position,Quaternion.identity);
             missileObj.GetComponent<Missile>().target = enemyInRange.GameObject.transform;
             enemyInRange = null;
@@ -140,11 +155,11 @@ public class DroneController : MonoBehaviour
         //Fire 3 (special)
         if(Input.GetButtonDown(specialButton))
         {
-            Debug.Log("rewind started");
-        }
-        if(Input.GetButtonUp(specialButton))
-        {
-            Debug.Log("rewind finished");
+            if(!canRewind) return;
+            audioSource.PlayOneShot(rewind);
+            OnRewindStart?.Invoke();
+            canRewind = false;
+            StartCoroutine(RewindCooldownTimer());
         }
     }
 
@@ -182,7 +197,7 @@ public class DroneController : MonoBehaviour
         }
     }
 
-    IEnumerator missileCooldownTimer()
+    IEnumerator MissileCooldownTimer()
     {
         yield return new WaitForSecondsRealtime(missileCooldown);
         missileShooted = false;
@@ -196,5 +211,13 @@ public class DroneController : MonoBehaviour
         {
             Debug.Log("GAME OVER");
         }
+    }
+
+    IEnumerator RewindCooldownTimer()
+    {
+        yield return new WaitForSecondsRealtime(rewindDuration);
+        OnRewindFinish?.Invoke();
+        yield return new WaitForSecondsRealtime(rewindCooldown);
+        canRewind = true;
     }
 }

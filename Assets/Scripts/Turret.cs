@@ -20,8 +20,10 @@ public class Turret : MonoBehaviour, IEnemy
     private TurretSight sight;
     private bool canFire = false;
     private bool lockSpriteEnabled = false;
-    private bool hitted = false;
     private AudioSource audioSource;
+    private DroneController droneController;
+    private bool rewindEnabled = false;
+    private bool hitted = false;
     
     private void Awake()
     {
@@ -29,6 +31,8 @@ public class Turret : MonoBehaviour, IEnemy
         sight.OnPlayerOnSight += Fire;
         sight.OnPlayerLostSight += DismissFire;
         audioSource = GetComponent<AudioSource>();
+        droneController = FindObjectOfType<DroneController>(); //TODO fix ref
+        DroneController.OnRewindStart += () => rewindEnabled = true;
     }
 
     private void Update()
@@ -57,13 +61,12 @@ public class Turret : MonoBehaviour, IEnemy
     public void Damage()
     {
         if(hitted) return;
+        hitted = true;
         var renderMeshes = GetComponentsInChildren<MeshRenderer>();
         Array.ForEach(renderMeshes, render => render.enabled = false);
         explosion.Play();
         audioSource.Play();
-        hitted = true;
-        OnTurretDestroyed?.Invoke();
-        Destroy(gameObject,1f);
+        StartCoroutine(RewindCheckpoint());
     }
 
     public void EnableLockSprite(bool enabled)
@@ -96,6 +99,23 @@ public class Turret : MonoBehaviour, IEnemy
     private void ShotMissiles()
     {
         GameObject missileObj = Instantiate(missile, missileSpawnLocation.position,Quaternion.identity);
-        missileObj.GetComponent<Missile>().target = FindObjectOfType<DroneController>().transform; //TODO fix ref
+        missileObj.GetComponent<Missile>().target = droneController.transform;
+    }
+
+    IEnumerator RewindCheckpoint()
+    {
+        yield return new WaitForSecondsRealtime(droneController.RewindDuration);
+        if(!rewindEnabled)
+        {
+            OnTurretDestroyed?.Invoke();
+            Destroy(gameObject,1f);
+        }
+        else
+        {
+            var renderMeshes = GetComponentsInChildren<MeshRenderer>();
+            Array.ForEach(renderMeshes, render => render.enabled = true);
+            rewindEnabled = false;
+            hitted = false;
+        }
     }
 }    
